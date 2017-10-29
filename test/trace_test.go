@@ -2,7 +2,7 @@ package test
 
 import (
 	"fmt"
-	"github.com/ranggadablues/tracer"
+	"github.com/ranggadablues/distro"
 	"os"
 	"path/filepath"
 	"testing"

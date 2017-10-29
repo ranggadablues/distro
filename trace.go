@@ -51,7 +51,12 @@ func (t *Trace) createTrace(msg string, traceType string) error {
 	typeoftrace := strings.ToUpper(traceType) + " "
 	if t.traceFile {
 		if _, e := os.Stat(t.tracePath); os.IsNotExist(e) {
-			return errors.New("Trace error: " + e.Error())
+			// return errors.New("Trace error: " + e.Error())
+			dest, e := os.Create(filepath.Join(t.tracePath, t.traceName))
+			defer dest.Close()
+			if e != nil {
+				return errors.New("create log: " + e.Error())
+			}
 		}
 
 		filename := filepath.Join(t.tracePath, t.traceName)
